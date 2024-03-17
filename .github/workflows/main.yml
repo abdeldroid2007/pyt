@@ -1,0 +1,25 @@
+name: Node.js Tests with Puppeteer
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '14' # or any version you are using in your project
+        
+    - name: Install dependencies
+      run: npm install puppeteer
+      
+    - name: Run tests with Puppeteer
+      run: node server.js
