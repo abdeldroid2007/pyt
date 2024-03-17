@@ -9,7 +9,7 @@ const fs = require('fs');
   await page.goto('https://eu.pythonanywhere.com/registration/register/beginner/');
 
   // Read the file containing emails in PIPE format
-  const emails = fs.readFileSync('emails.txt', 'utf8').split('|');
+  const emails = fs.readFileSync('emails.txt', 'utf8').split('\n').map(email => email.trim());
 
   // Generate a random username
   const username = Math.random().toString(36).substring(7);
